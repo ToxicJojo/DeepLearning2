@@ -160,16 +160,16 @@ Using a higher learning rate resulted in pretty poor results of about 15\% test 
 
 \section{Evaluation}
 We evaluate our network by testing against the 10000 test images in the CIFAR-10 dataset. \\
-With a low amount of opimization iterations we get varying results. For example with 500 batches of optimization we get a test accuracy between 30\% up to 36\% \\
-Increasing the amount of iterations we found the reulst to be both better and more stable. \\
-Going up to 2500 iterations we achive a test accuracy of 54\% - 56\% and with 20000 iteration we reached a test accuracy of 68.78\%.
+With a low amount of optimization iterations we get varying results. For example with 500 batches of optimization we get a test accuracy between 30\% up to 36\% \\
+Increasing the amount of iterations we found the results to be both better and more stable. \\
+Going up to 2500 iterations we achive a test accuracy of 54\% - 56\% and with 20000 iterations we reached a test accuracy of 68.78\%.
 
 
 
 %------------------------------------------------
 
 \section{Other architectures}
-We tried out another architecure. It is similar to our previous one but uses 3 x 3 convolutional filters and has an additional convolutional layer. We did not apply max pooling after this layer as it didn't improve our performance. \\
+We tried out another architecture. It is similar to our previous one but uses 3 x 3 convolutional filters and has an additional convolutional layer. We did not apply max pooling after this layer as it didn't improve our performance. \\
 
 
 \begin{table}[htb]
@@ -292,8 +292,8 @@ We can see that it is able to accurately predict the frequency of the curve but 
 We chose a dataset of international airline passengers as a real world example for using Recurrent Neural Networks with LSTM cells. \\
 The dataset contains the amount of international airline passengers for every month from 1949 until 1960. We can observe a general upwards trend with periodic spikes. \\
 For this task we used a RNN architecture similar to the one previously used but stacked 5 LSTM cells as this provided a good improvement over just using one. \\
-We split up the data in a trainig and a test set. The training set contains the first 100 datapoints and the test set contains the other 44 datapoints. \\
-After training we evaluate the network with our test set and get and average MSE of ~0.141. Looking at the predicition fit the network is able to accuratly predict the general trend and frequency of the spikes.
+We split up the data in a training and a test set. The training set contains the first 100 datapoints and the test set contains the other 44 datapoints. \\
+After training we evaluate the network with our test set and get an average MSE of ~0.141. Looking at the predicition fit the network is able to accuratly predict the general trend and frequency of the spikes.
 
 \begin{figure}[htb]
 \centering
