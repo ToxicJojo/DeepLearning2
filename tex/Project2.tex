@@ -21,7 +21,7 @@
 
 \documentclass[twoside, twocolumn]{article}
 
-\usepackage{blindtext} % Package to generate dummy text throughout this template 
+\usepackage{blindtext} % Package to generate dummy text throughout this template
 
 \usepackage[sc]{mathpazo} % Use the Palatino font
 \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
@@ -73,23 +73,24 @@
 \posttitle{\end{center}} % Article title closing formatting
 \title{Machine Learning - Deep Learning Project 2} % Article title
 \author{%
-\textsc{Anton Borries} \\[1ex] 
+\textsc{Anton Borries} \\[1ex]
 \normalsize 2204600 \\
 \normalsize  \href{mailto:anton.borries@hhu.de}{anton.borries@hhu.de}
-\and 
+\and
 \textsc{Johannes Thiel} \\[1ex]
-\normalsize 2164216 \\ 
-\normalsize \href{mailto:johannes.thiel@hhu.de}{johannes.thiel@hhu.de} 
+\normalsize 2164216 \\
+\normalsize \href{mailto:johannes.thiel@hhu.de}{johannes.thiel@hhu.de}
 \and
 \textsc{Simon Schw\"ar} \\[1ex]
-\normalsize extern \\ 
+\normalsize extern (HSD/RSH) \\
+\normalsize \href{mailto:simon.schwaer@hs-duesseldorf.de}{simon.schwaer@hs-duesseldorf.de}
 }
 
 \date{\today} % Leave empty to omit a date
 \renewcommand{\maketitlehookd}{%
 \begin{abstract}
-\noindent We train a neural Network to recognize Images from the Cifar-10 Dataset. \\
-In addition to this we take a look at Recurrent Neural Networks using Long short-term memory cells and use them to predict ....
+\noindent We train a neural Network to recognize images from the CIFAR-10 dataset. \\
+Additionally, we take a look at Recurrent Neural Networks using Long Short-Term Memory cells and use them to predict an arbitrary dataset and the international airline passenger volume.
 \end{abstract}
 }
 
@@ -106,11 +107,11 @@ In addition to this we take a look at Recurrent Neural Networks using Long short
 
 \section{Architecture}
 
-\lettrine[nindent=.2em,lines=2]{O} ur Network consists out of 5 total Layers. The first two are both Convolutional Layers and the rest are Fully Connected. \\
+\lettrine[nindent=.2em,lines=2]{O} ur network consists of 5 total layers. The first two are both convolutional layers and the latter are fully connected. \\
 We make use of 2 x 2 pooling and local response normalization between the two convolutional layers. \\
-The whole network has about 1 Million parameters. \\
-We found that increasing the size of the fully connected layers did not result in greater accuraccy, so we choose a small size for them to speed up the training process. \\
-We used ReLu as our Activation Function for all Layers.
+The whole network has about 1 million parameters. \\
+We found that increasing the size of the fully connected layers did not result in greater accuracy, so we chose a small size for them to speed up the training process. \\
+We used ReLu as our activation function for all layers.
 
 \begin{table}[htb]
 \label{table_conv}
@@ -144,22 +145,22 @@ We used ReLu as our Activation Function for all Layers.
 
 \section{Training}
 
-We used a Batch Size of 128 to train our Network. \\
-For the loss function we decided on using the cross entropy method.
+We used a batch size of 128 to train our network. \\
+For the loss function we decided to use the cross entropy method.
 
 \begin{equation}
  C = - \dfrac{1}{n} \sum_{z} [y \ln a + (1 - y) \ln (1 - a)]
 \end{equation}
 
-This is helping us, avoiding the learning slowdown \cite{crossentro}.\\
-We utilized the Adam Optimizer with a learning rate of $0.001$ to train the Network. \\
+This is helping us to avoid the learning slowdown \cite{crossentro}.\\
+We utilized the Adam optimizer with a learning rate of $0.001$ to train the network. \\
 Using a higher learning rate resulted in pretty poor results of about 15\% test accuracy.
 
 %------------------------------------------------
 
 \section{Evaluation}
-We evaluate our network by testing against the 10000 test images in the Cifar-10 Dataset. \\
-We found that with a low amount of opimization iterations we get varying results. For example with 500 batches of optimization we get a test accuracy between 30\% up to 36\% \\
+We evaluate our network by testing against the 10000 test images in the CIFAR-10 dataset. \\
+With a low amount of opimization iterations we get varying results. For example with 500 batches of optimization we get a test accuracy between 30\% up to 36\% \\
 Increasing the amount of iterations we found the reulst to be both better and more stable. \\
 Going up to 2500 iterations we achive a test accuracy of 54\% - 56\% and with 20000 iteration we reached a test accuracy of 68.78\%.
 
@@ -168,7 +169,7 @@ Going up to 2500 iterations we achive a test accuracy of 54\% - 56\% and with 20
 %------------------------------------------------
 
 \section{Other architectures}
-We tried out another architecure. It is similliar to our previous one but uses 3 x 3 convolutional filters and has an extra convolutional layer. We do note apply max pooling after this layer as it didn't improve our performance. \\
+We tried out another architecure. It is similar to our previous one but uses 3 x 3 convolutional filters and has an additional convolutional layer. We did not apply max pooling after this layer as it didn't improve our performance. \\
 
 
 \begin{table}[htb]
@@ -201,18 +202,18 @@ We tried out another architecure. It is similliar to our previous one but uses 3
 
 %------------------------------------------------
 
-\section{Dataset distortion}
+\section{Dataset Distortion}
 
-We applied distortion to every batch at runtime to increase the size of our dataset. For this we changed the hue, flipped the image and changed the brigthness. \\
-We could not find any significant increase to our accuarcy doing this.
-We think this is the case because we don't run enough trainig iterations to make effectibe use of having more data.
+We applied distortion to every batch at runtime to increase the size of our dataset. For this we changed the hue, flipped the image and changed the brightness. \\
+We could not observe any significant increase in our accuracy by doing this.
+We think this is the case because we did not run enough training iterations to make effective use of having more data.
 
 %------------------------------------------------
 
 \section{Dropout}
 
 We tried applying a dropout layer for both our networks. This resulted in worse accuracy accross the board. \\
-We think this is because our fully connected layers are arlready pretty small and maybe dosn't have enough parameters after dropout to learn the data.
+This might be because of our fully connected layers being rather small and maybe not having enough parameters after dropout to learn the data.
 
 %------------------------------------------------
 
@@ -243,61 +244,61 @@ We visualize our network using Tensorboard.
 
 %------------------------------------------------
 
-\section{Recurrent Neural Network architecture}
-We choose a very minimal architecture for this task as it already provides good results and our tests showed stacking more LSTM cells does not provide better results. \\
+\section{Recurrent Neural Network Architecture}
+We chose a very minimalist architecture for this task as it already provides good results and our tests showed that stacking more LSTM cells did not provide better results. \\
 We use one LSTM cell followed by a fully connected layer with one unit.
 
 \begin{figure}[htb]
 \centering
 	\includegraphics[width=0.48\textwidth]{rnn.png}
-	\caption{Vizusalization of our rnn}
+	\caption{Visualization of our RNN}
 \end{figure}
 
 
 %------------------------------------------------
 
 \section{LSTM Cells}
-The idea of Long Short Term Memory cells is to give the network a memory of previous inputs, so they can be used to make predictions. \\
-The LSTM cells have a hidden state that can be used to "memorize" information. During trainig the network learns which information to keep. \\
+The concept of Long Short Term Memory cells is to give the network a memory of previous inputs, so they can be used to make predictions. \\
+The LSTM cells have a hidden state that can be used to "memorize" information. During training, the network learns which information to keep. \\
 A LSTM takes three inputs:
-\begin{itemize} 
-\item The normal input
-\item The output of the previous cell
-\item The hidden state of the previous cell
+\begin{itemize}
+\item the normal input
+\item the output of the previous cell
+\item the hidden state of the previous cell
 \end{itemize}
 
 %------------------------------------------------
 
 \section{Training}
-We use the first 700 data entries as our training set and the last 300 datapoints as our test set. \\
-As our cost function we use the Mean Squared Error and optimize with the AdamOptimizer. \\
-After training out network on the first 700 datapoints we evaluate it using our test set. Over the whole testset we get an average MSE of ~0.000159.
+We use the first 700 data entries for our training set and the last 300 datapoints for our test set. \\
+As cost function we use the Mean Squared Error and optimize with the Adam optimizer. \\
+After training our network on the first 700 datapoints, we evaluate it using our test set. Over the whole test set we get an average MSE of ~0.000159.
 
 %------------------------------------------------
 
-\section{Prediction fit}
-Plottin our predction and the ground truth shows what our network learnend an what it got wrong \\
-We can see that it is able to accuratly predict the frequency of the curve but it seems to be a little bit offset on the y-axis
+\section{Prediction Fit}
+Plotting our prediction and the ground truth visualizes the performance of our network. \\
+We can see that it is able to accurately predict the frequency of the curve but it seems to have a little offset on the y-axis
 
 \begin{figure}[htb]
 \centering
 	\includegraphics[width=0.48\textwidth]{rnn_fit.png}
-	\caption{The red line is our prediction the blue one is the ground truth}
+	\caption{The red line is our prediction, the blue one is the ground truth}
 \end{figure}
 
 
-\section{Real World example}
+\section{Real World Example}
 
-We choose a dataset of international airline passengers as a real world example for using Recurrent Neural Networks with LSTM cells. \\
-The dataset contains the amount of International airline passengers for every month between 1949 up until 1960. We can find a generall upwards trend with periodic spikes. \\
-For this task we used a RNN architecture simillar to the one previously used but stacked 5 LSTM cells as this provided a good improvment over just using one. \\
+We chose a dataset of international airline passengers as a real world example for using Recurrent Neural Networks with LSTM cells. \\
+The dataset contains the amount of international airline passengers for every month from 1949 until 1960. We can observe a general upwards trend with periodic spikes. \\
+For this task we used a RNN architecture similar to the one previously used but stacked 5 LSTM cells as this provided a good improvement over just using one. \\
 We split up the data in a trainig and a test set. The training set contains the first 100 datapoints and the test set contains the other 44 datapoints. \\
-After training we evaluate the network with our test set and get and average MSE of ~0.141. Looking at the predicition fit the network is able to accuratly predict the generall trend and frequency of the spikes.
+After training we evaluate the network with our test set and get and average MSE of ~0.141. Looking at the predicition fit the network is able to accuratly predict the general trend and frequency of the spikes.
 
 \begin{figure}[htb]
 \centering
 	\includegraphics[width=0.48\textwidth]{rnn_plane_fit.png}
-	\caption{The red line is our prediction the blue one is the ground truth}
+	\caption{The red line is our prediction, the blue one is the ground truth}
 \end{figure}
 
 %----------------------------------------------------------------------------------------
@@ -307,7 +308,7 @@ After training we evaluate the network with our test set and get and average MSE
 \begin{thebibliography}{99} % Bibliography - this is intentionally simple in this template
 
 \bibitem{crossentro}Cross Entropy,\\ \url{http://neuralnetworksanddeeplearning.com/chap3.html}, 06 12 2016.
- 
+
 \end{thebibliography}
 
 %----------------------------------------------------------------------------------------
